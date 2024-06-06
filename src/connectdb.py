@@ -20,8 +20,9 @@ if __name__ == '__main__':
     connection_string = 'mysql+mysqlconnector://root:root@localhost:3306/datacamp'
     sql_engine = create_engine(connection_string)
 
-    load_data(sql_engine)
+    #load_data(sql_engine)
     query_data(sql_engine)
+
 
 
 
