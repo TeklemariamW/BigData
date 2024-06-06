@@ -96,7 +96,8 @@ if __name__ == '__main__':
     #print(remove_duplicate)
 
     #20. Reshape DataFrame (Melt): Convert the DataFrame from wide format to long format by melting columns.
-    
     pandas_melt = pd.melt(df2, id_vars=['firstname'], value_vars=['country', 'phonenumber'])
-    print(pandas_melt[:5])
-    print(pandas_melt[995:])
+    #print(pandas_melt[:5])
+    #print(pandas_melt[995:])
+
+    #21. Finally:  load the the data frame as mysql table using sqlalchamy 
