@@ -7,7 +7,7 @@ import pandas as pd
 
 def read_csv():
     
-    return pd.read_csv('employee.csv')
+    return pd.read_csv('../employee.csv')
 
 if __name__ == '__main__':
     df = read_csv()
@@ -55,14 +55,14 @@ if __name__ == '__main__':
     #print(pivot_table[:5])
 
     #11. Merge DataFrames: Merge the DataFrame with another DataFrame containing id and phonenumber
-    df2 = pd.read_csv("student.csv")
+    df2 = pd.read_csv("../student.csv")
     merged_inner = pd.merge(df, df2, on='id')
     merged_left = pd.merge(df, df2, on='id', how='left')
     merged_full = pd.merge(df, df2, on='id', how='outer')
     #print(merged_full[:5])
 
     #12. Fill Missing Values: Fill missing values in the bonus column with 0.
-    df_tempfile = pd.read_csv("temp.csv")
+    df_tempfile = pd.read_csv("../temp.csv")
     fill_nan_values = df_tempfile.copy()
     fill_nan_values['phonenumber'] = fill_nan_values['phonenumber'].fillna(0)
     #print(fill_nan_values[:5])
