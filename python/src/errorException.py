@@ -8,7 +8,11 @@ KeyError: Occurs when a key is missing in a dictionary
 ZeroDivisionError: Appears when the second operand in a division or modulo operation is 0
 TypeError: Happens when an operation, function, or method operates on an object of inappropriate type
 ValueError: Occurs when an operation, function, or method receives the right type of argument but the wrong value 
+
+...more
 '''
+
+# handling exception with try/except
 def handle_exception():
     #while True:
     try:
@@ -18,6 +22,7 @@ def handle_exception():
     except ValueError:
         print("Oops!  That was no valid number.  Try again...")
 
+#
 def log_exception():
     try:
         f = open('myfile.txt')
@@ -40,7 +45,7 @@ def fun_exception():
     except ZeroDivisionError as err:
         print('Handling run-time error:', err)
 
-# Custom exceptions
+# Custom exceptions (raise)
 class GradeValueError(Exception):
     pass
 def calculate_average_grade(grades):
@@ -65,7 +70,7 @@ def chain_exception():
         raise RuntimeError("unable to handle error") #from None
 
 '''
-Clean up action
+Clean up action with finally
 '''
 def clean_up_action(x, y):
     try:
@@ -81,15 +86,16 @@ def multiple_unrelated_exc():
     excs = [OSError('error 1'), SystemError('error 2')]
     raise ExceptionGroup('there were problems', excs)
 
+#Add more information when an exception occurs
 def add_note_toException():
     try:
         raise TypeError('bad type')
     except Exception as e:
         e.add_note('Add some information')
-        e.add_note('Add some more information')
         raise
 
 if __name__ == "__main__":
+    pass
     #handle_exception()
     #log_exception()
     #fun_exception()
@@ -97,4 +103,4 @@ if __name__ == "__main__":
     #chain_exception()
     #clean_up_action(2, 1) #(2 ,0) ('2', '1')
     #multiple_unrelated_exc()
-    add_note_toException()
+    #add_note_toException()
