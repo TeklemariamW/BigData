@@ -22,7 +22,7 @@ def handle_exception():
     except ValueError:
         print("Oops!  That was no valid number.  Try again...")
 
-#
+# See the log of exception
 def log_exception():
     try:
         f = open('myfile.txt')
@@ -65,10 +65,11 @@ def calculate_average_grade(grades):
 #RuntimeError
 def chain_exception():
     try:
-        open("database.sqlite")
+        print(10/2)
     except OSError:
         raise RuntimeError("unable to handle error") #from None
-
+    else:
+        print("if this print, there is no error in my code")
 '''
 Clean up action with finally
 '''
@@ -92,6 +93,7 @@ def add_note_toException():
         raise TypeError('bad type')
     except Exception as e:
         e.add_note('Add some information')
+        e.add_note("addiiiiiiiiiiiiiiiiiiiii")
         raise
 
 if __name__ == "__main__":
@@ -104,3 +106,6 @@ if __name__ == "__main__":
     #clean_up_action(2, 1) #(2 ,0) ('2', '1')
     #multiple_unrelated_exc()
     #add_note_toException()
+
+for i in range(20):
+    print(f"This is a cool script {i}")
