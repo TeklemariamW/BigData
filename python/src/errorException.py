@@ -106,6 +106,3 @@ if __name__ == "__main__":
     #clean_up_action(2, 1) #(2 ,0) ('2', '1')
     #multiple_unrelated_exc()
     #add_note_toException()
-
-for i in range(20):
-    print(f"This is a cool script {i}")
