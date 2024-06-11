@@ -2,6 +2,7 @@ import psycopg2
 import pandas as pd
 from sqlalchemy import create_engine
 import os
+from dotenv import load_dotenv
 
 def load_data(connection_engine):
     # Get the directory path of the current script
@@ -13,14 +14,22 @@ def load_data(connection_engine):
 
 def query_data(connection_engine):
     print("It connects properly")
-    #result = cur.execute('SELECT * FROM branch;')
     query = "select * from employee_t et limit 4"
     df = pd.read_sql(query, connection_engine)
     print(df)
 
 if __name__ == '__main__':
     try:
-        url = "postgresql+psycopg2://consultants:WelcomeItc%402022@ec2-3-9-191-104.eu-west-2.compute.amazonaws.com:5432/testdb"
+        # Load environment variables from .env file
+        load_dotenv()
+        # Retrieve database connection details from environment variables
+        db_username = os.getenv("DB_USERNAME")
+        db_password = os.getenv("DB_PASSWORD")
+        db_host = os.getenv("DB_HOST")
+        db_port = os.getenv("DB_PORT")
+        db_name = os.getenv("DB_NAME")
+
+        url = f"postgresql+psycopg2://{db_username}:{db_password}@{db_host}:{db_port}/{db_name}"
         sql_engine = create_engine(url)
 
         query_data(connection_engine=sql_engine)
