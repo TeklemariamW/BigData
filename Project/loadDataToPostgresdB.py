@@ -8,14 +8,10 @@ def load_data(connection_engine):
     # Get the directory path of the current script
     current_dir = os.path.dirname(os.path.abspath(__file__))
     # Construct the relative path to the file
-    file_path = os.path.join(current_dir, "../data/employeeT.csv")
+    file_path = os.path.join(current_dir, "bank.csv")
     df = pd.read_csv(file_path)
-    df.to_sql("employee_t",connection_engine, if_exists='replace', index=False)
 
-def query_data(connection_engine):
-    query = "select * from employee_t where city = 'Atlanta'"
-    df = pd.read_sql(query, connection_engine)
-    print(df)
+    df.to_sql("bank", connection_engine, if_exists='append', index=False)
 
 if __name__ == '__main__':
     try:
@@ -29,10 +25,10 @@ if __name__ == '__main__':
         db_name = os.getenv("DB_NAME")
 
         url = f"postgresql+psycopg2://{db_username}:{db_password}@{db_host}:{db_port}/{db_name}"
+
         sql_engine = create_engine(url)
 
-        query_data(connection_engine=sql_engine)
-        #load_data(connection_engine=sql_engine)
+        load_data(connection_engine=sql_engine)
 
     except Exception as ex:
-        print("NOT CONNECTED: ",ex)
+        print(ex)
